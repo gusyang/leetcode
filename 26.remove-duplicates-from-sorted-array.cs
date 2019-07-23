@@ -5,16 +5,16 @@
  */
 public class Solution {
     public int RemoveDuplicates(int[] nums) {
-        if(nums == null ||nums.Length == 0)
-            return 0;
-        int returnvalue = 0;
-        for(int i = 0; i < nums.Length; i++ ){
-            if(i == 0 || nums[i] != nums[i-1]){
-                nums[returnvalue++] = nums[i];
-            }
+        if(nums == null || nums.Length == 0) return 0;
+        int result = 0;
+        for(int i = 1; i < nums.Length ; i++){
+           if(nums[i] != nums[result]) 
+           {
+                result++;
+               nums[result] = nums[i];
+           }
         }
-        return returnvalue;
-        
+        return result + 1;
     }
 }
 
