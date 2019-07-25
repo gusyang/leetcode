@@ -19,11 +19,11 @@ public class Solution {
         string[] map = new string[]{
         "","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"
         };
-
+        result.Add("");
         foreach(char d in digits){
             List<string> tmp = new List<string>();
-            foreach(char c in map[d - '0']){
-                foreach(string a in result){
+            foreach(string a in result){
+                foreach(char c in map[d - '0']){
                     tmp.Add(a + c);
                 }
             }
