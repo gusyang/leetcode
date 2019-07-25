@@ -8,7 +8,7 @@ public class Solution {
         if(nums == null || nums.Length == 0) 
             return new int[] {-1,-1};
         int[] result = new int[] {-1,-1};
-        for(int i = 0; i < nums.Length - 1; i++){
+        for(int i = 0; i <= nums.Length - 1; i++){
             if(nums[i] == target){
                 result[0] = i;
                 break;
@@ -17,7 +17,7 @@ public class Solution {
         if(result[0] == -1) 
             return result;
 
-        for(int j = nums.Length - 1; j>0; j--){
+        for(int j = nums.Length - 1; j >= 0; j--){
             if(nums[j] == target){
                 result[1] = j;
                 break;
