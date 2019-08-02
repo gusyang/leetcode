@@ -60,14 +60,14 @@ public class Solution {
         if(prices == null || prices.Length < 2) return 0;
         int i = 0, maxprofit = 0, v = prices[0], p = prices[0];
         while( i < prices.Length - 1 ){
-            while(i < prices.Length - 1 && price[i] <= prices[i + 1]) i++;
+            while(i < prices.Length - 1 && prices[i] <= prices[i + 1]) i++;
             v = prices[i];
             while(i < prices.Length - 1 && prices[i] >= prices[i + 1]) i++;
             p = prices[i];
             maxprofit += p - v;
         }
 
-        
+        return maxprofit;
     }
 }
 
