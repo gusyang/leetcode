@@ -14,7 +14,20 @@ public class Solution
 {
     public int[][] Insert(int[][] intervals, int[] newInterval)
     {
-        
+        List<int[]> res = new List<int[]>();
+        foreach(int[] interval in intervals){
+            if(interval[1] < newInterval[0])
+            { 
+                res.Add(interval);
+            } else if(interval[0] > newInterval[1]){
+                res.Add(newInterval);
+                newInterval = interval;
+            } else if(interval[1] >= newInterval[0] || interval[0] <= newInterval[1]){
+                newInterval = new int[]{Math.Min(interval[0],newInterval[0]), Math.Max(interval[1],newInterval[1])};
+            }
+        }
+        res.Add(newInterval);
+        return res.ToArray();    
 
     }
 }
