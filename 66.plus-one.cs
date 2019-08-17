@@ -48,7 +48,7 @@ public class Solution {
                 digits[i]++;
                 return digits;
             }
-            //if = 9, just set 0, and if well loop to next index
+            //if = 9, just set 0, and if will loop to next.
             digits[i] = 0;
         }
         //if still do not jump out, means all 9 in the input array
