@@ -27,7 +27,38 @@ exection -> execution (insert 'u')
  */
 public class Solution
 {
-    public int MinDistance(string word1, string word2)
+     public int MinDistance(string word1, string word2)
+    {
+        int m = word1.Length, n = word2.Length;
+        int[][] dp = new int[m + 1][];
+
+        //init
+        for(int i = 0; i <= m; i++){
+            dp[i] = new int[n + 1];
+            dp[i][0] = i;
+        }
+        for(int j = 0; j <= n; j++) dp[0][j] = j;
+
+        //
+        for(int i = 1; i <= m; i++){
+            for(int j = 1; j <= n; j++){
+                dp[i][j] = int.MaxValue;
+                if(word1[i - 1] == word2[j - 1]){
+                    dp[i][j] =dp[i - 1][j - 1];
+                } else {
+                    int replace = dp[i - 1][j - 1],
+                        delete = dp[i - 1][j],
+                        insert = dp[i][j - 1];
+                    dp[i][j] = Math.Min(replace, Math.Min(delete,insert)) + 1;                    
+                }
+            }
+        }
+
+        return dp[m][n];
+
+    }
+
+    public int MinDistance0(string word1, string word2)
     {
         int m = word1.Length, n = word2.Length;
         int[][] dp = new int[m + 1][];
