@@ -28,27 +28,27 @@ namespace ConsoleApp1
                 return 0;
             }
             int res = 1;
-            int dup = 1;
+            bool present = false;
             for(int i = 1; i < nums.Length; i++)
             {
                 if(nums[i] == nums[i - 1])
                 {
-                    if(dup > 2)
-                    {
-                        continue;
+                    if(!present)
+                    {                        
+                        nums[res] = nums[i];
+                        res++;
+                        present = true;
                     }
-                    nums[res] = nums[i];
-                    res++;
-                    dup++;
+                
                 }
                 else
                 {
                     nums[res] = nums[i];
                     res++;
-                    dup = 1;
+                    present = false;
                 }
             }
-            return res + 1;
+            return res;
         }
     }
 }
