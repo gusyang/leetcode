@@ -72,11 +72,13 @@ public class Solution {
                     {
                         if(p[pi - 2] == s[si - 1] || p[pi - 2] == '.')
                         {
-                            dp[si][pi] = dp[si][pi - 2] || dp[si - 1][pi];
+                          // 当*的前一位是'.'， 或者前一位的pc等于sc的话，
+                          // *代表1个(dp[i][j - 1])，*代表多个(dp[i - 1][j])，或者用*消掉c*(dp[i][j - 2])
+                            dp[si][pi] = dp[si][pi - 2] || dp[si - 1][pi] || dp[si][pi - 1] ;
                         }
                         else
                         {
-                            dp[si][pi] = dp[si][pi - 2];
+                            dp[si][pi] = dp[si][pi - 2]; // 用*消掉c*
                         }
                     }
                 }
