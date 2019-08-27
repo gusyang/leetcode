@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 /*
  * 81. Search in Rotated Sorted Array II
 Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
@@ -33,7 +29,7 @@ namespace ConsoleApp1
             int left = 0, right = nums.Length - 1;
             
                 
-            while (left < right)
+            while (left + 1 < right)
             {
                 int mid = left + (right - left) / 2;
                 if(nums[mid] == target)
@@ -52,7 +48,7 @@ namespace ConsoleApp1
                     } 
                 } else if(nums[mid] < nums[left])
                 {
-                    if(nums[mid] >= target && nums[right] >= target)
+                    if(nums[mid] <= target && nums[right] >= target)
                     {
                         left = mid;
                     } else
