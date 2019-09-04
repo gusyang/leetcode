@@ -33,22 +33,22 @@ public class Solution
     {
         if (head == null || head.next == null) return head;
         ListNode p = head;
-        int n = 1;
+        int n = 1; //list count
         while (p.next != null)
         {
             p = p.next;
             n++;
         }
+        //after this loop move, p moved to tail
+        p.next = head;  //connect tail to head
 
-        p.next = head;
-
-        k %= n;
+        k %= n; //if K > list count, use k%count
         for (int i = 0; i < n - k; i++)
         {
-            p = p.next;
+            p = p.next; //move to K, 
         }
         head = p.next;
-        p.next = null;
+        p.next = null; //cut link to avoid circle
         p = head;
         return head; 
     }
