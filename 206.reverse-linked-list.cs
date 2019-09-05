@@ -44,5 +44,16 @@ public class Solution {
         }
         return pre;
     }
+      public ListNode ReverseList(ListNode head) {
+        ListNode cur = head, prev = null;
+        while (cur != null)
+        {
+            ListNode tmp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = tmp;            
+        }
+        return prev;
+    }
 }
 
