@@ -5,18 +5,11 @@
  *
  * https://leetcode.com/problems/remove-linked-list-elements/description/
  *
- * algorithms
- * Easy (36.33%)
- * Likes:    941
- * Dislikes: 59
- * Total Accepted:    246.6K
- * Total Submissions: 678.4K
  * Testcase Example:  '[1,2,6,3,4,5,6]\n6'
  *
  * Remove all elements from a linked list of integers that have value val.
  * 
  * Example:
- * 
  * 
  * Input:  1->2->6->3->4->5->6, val = 6
  * Output: 1->2->3->4->5
@@ -33,7 +26,20 @@
  */
 public class Solution {
     public ListNode RemoveElements(ListNode head, int val) {
-        
+       if(head == null){
+            return head;
+        }
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode pre = dummy;
+        while(pre.next != null){
+            if( pre.next.val == val){
+                pre.next = pre.next.next;
+            }else{
+                pre = pre.next;
+            }
+        }
+        return dummy.next;
     }
 }
 
