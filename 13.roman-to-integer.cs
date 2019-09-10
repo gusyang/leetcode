@@ -110,6 +110,7 @@ public class Solution {
         return ret;
     }
 
+//AC, but can not pass this test: IVIV
     public int RomanToIntV1(string s){
         if(s == null || s == ""){
             return 0;
@@ -153,11 +154,12 @@ public class Solution {
                     break;
                 case 'D':
                     ret += 500;
+                    break;
                 case 'M':
                     ret += 1000;
                     break;
                 default:
-                    ;            
+                    break;            
             }
         }
         return ret;
