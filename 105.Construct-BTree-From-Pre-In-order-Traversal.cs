@@ -28,20 +28,28 @@ Return the following binary tree:
 
 public class Solution {
     public TreeNode BuildTree(int[] preorder, int[] inorder) {
-        return helper(preorder, inorder, 0, 0, inorder.Length - 1);
+        if(preorder == null || inorder == null || preorder.Length != inorder.Length){
+            return null;
+        }
+        Dictionary<int, int> map = new Dictionary<int, int>();
+        for(int i = 0; i < inorder.Length; i++){
+            map.Add(inorder[i],i);
+        }
+        return helper(preorder, inorder, 0, 0, inorder.Length - 1, map);
     }
 
-    private TreeNode helper(int[] preorder, int[] inorder, int prestart, int instart, int inend){
+    private TreeNode helper(int[] preorder, int[] inorder, int prestart, int instart, int inend, Dictionary<int, int> map){
         if(instart > inend || prestart > preorder.Length - 1){
             return null;
         }
         TreeNode root = new TreeNode(preorder[prestart]);
         int idx = instart;
+        idx = map[root.val];/* 
         while (idx <= inend && inorder[idx] != root.val){            
             idx++;
-        }
-        root.left = helper(preorder,inorder,prestart + 1, instart, idx - 1);
-        root.right = helper(preorder,inorder, prestart + idx - instart + 1, idx + 1, inend);
+        }*/
+        root.left = helper(preorder,inorder,prestart + 1, instart, idx - 1,map);
+        root.right = helper(preorder,inorder, prestart + idx - instart + 1, idx + 1, inend,map);
         return root;
     }
 }
