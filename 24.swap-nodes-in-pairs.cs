@@ -41,7 +41,6 @@ public class Solution {
         dummy.next = head;
         ListNode cur = dummy;
         while(cur.next != null && cur.next.next != null){
-
             /*swap */
             ListNode tmp = cur.next;
             cur.next = tmp.next;
@@ -49,6 +48,21 @@ public class Solution {
             cur.next.next = tmp;
             /*swap */
             cur = cur.next.next;
+        }
+        return dummy.next;
+    }
+
+    public ListNode SwapPairs1(ListNode head) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode cur = dummy;
+        while(cur.next != null && cur.next.next != null){
+            ListNode first = cur.next;
+            ListNode second = cur.next.next;
+            first.next = second.next;
+            cur.next =  second;
+            second.next = first;
+            cur = first;
         }
         return dummy.next;
     }
